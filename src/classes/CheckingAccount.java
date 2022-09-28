@@ -15,7 +15,8 @@ public class CheckingAccount extends Account {
         return super.toWithdraw(value);
     }
 
-    private boolean insufficientBalance(double value) {
+    @Override
+    boolean insufficientBalance(double value) {
         return getBalance() < value;
     }
 

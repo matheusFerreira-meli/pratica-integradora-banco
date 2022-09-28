@@ -39,6 +39,8 @@ public abstract class Account {
         return value <= 0;
     }
 
+    abstract boolean insufficientBalance(double value);
+
     @Override
     public String toString() {
         return "{" +

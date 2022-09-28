@@ -22,7 +22,7 @@ public class SavingsAccount extends Account {
     public boolean toWithdraw(double value) throws InvalidNumberException, InsufficientFundsException {
         if (insufficientBalance(value)) throw new InsufficientFundsException("Saldo insuficiente");
 
-        return super.toWithdraw(value);
+        return super.toWithdraw(value + rate);
     }
 
     @Override

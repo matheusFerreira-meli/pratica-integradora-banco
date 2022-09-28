@@ -33,11 +33,11 @@ public class SpecialAccount extends Account {
     @Override
     public String toString() {
         return "\n{" +
-                "type=CheckingAccount" +
-                ", limit=" + limit +
+                "type=SpecialAccount" +
                 ", number=" + super.getNumber() +
                 ", balance=" + super.getBalance() +
                 ", client=" + super.getClient() +
+                ", limit=" + limit +
                 "}";
     }
 }

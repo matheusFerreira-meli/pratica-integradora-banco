@@ -1,5 +1,6 @@
 package classes;
 
+import exceptions.InsufficientFundsException;
 import exceptions.InvalidNumberException;
 
 public abstract class Account {
@@ -20,7 +21,7 @@ public abstract class Account {
         return number;
     }
 
-    public boolean toWithdraw(double value) throws InvalidNumberException {
+    public boolean toWithdraw(double value) throws InvalidNumberException, InsufficientFundsException {
         if(isInvalidNumber(value)) throw new InvalidNumberException("Valor de saque inválido");
 
         balance -= value;

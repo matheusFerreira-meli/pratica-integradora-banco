@@ -72,7 +72,6 @@ public class AccountManager {
         accounts.remove(id);
     }
 
-
     public List<Account> getCheckingAcc() {
         return accounts.values().stream()
                 .filter(account -> account instanceof CheckingAccount)
@@ -85,4 +84,16 @@ public class AccountManager {
                 .filter(account -> account instanceof SpecialAccount && account.getBalance() < 0)
                 .collect(Collectors.toList());
     }
+
+    public void transfer(int idAccOrigin, int idAccDestination, double value) throws NotFoundException, InvalidNumberException, InsufficientFundsException {
+        Account accountOrigin = accounts.get(idAccOrigin);
+        if(accountOrigin == null) throw new NotFoundException("Conta não encontrada");
+
+        Account accountDestination = accounts.get(idAccDestination);
+        if(accountDestination == null) throw new NotFoundException("Conta não encontrada");
+
+        accountOrigin.toWithdraw(value);
+        accountDestination.deposit(value);
+    }
+
 }

@@ -14,7 +14,6 @@ public class Main {
 
         PrintScreen screen = new PrintScreen();
         PrintPrinter printer = new PrintPrinter();
-        screen.printOut(accountManager.getAccounts().toString());
-        printer.printOut(accountManager.getAccounts().toString());
+        screen.printOut(accountManager.getCheckingAccounts().toString());
     }
 }

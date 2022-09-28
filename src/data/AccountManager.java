@@ -55,4 +55,10 @@ public class AccountManager {
 
         accounts.remove(id);
     }
+
+    public List<Account> getCheckingAccounts() {
+        return accounts.values().stream()
+                .filter(account -> account instanceof CheckingAccount)
+                .collect(Collectors.toList());
+    }
 }

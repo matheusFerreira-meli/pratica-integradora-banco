@@ -4,7 +4,9 @@ import classes.*;
 import util.GenerateId;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class AccountManager {
     private final GenerateId generateId;
@@ -33,4 +35,9 @@ public class AccountManager {
         accounts.put(idAccount, account);
     }
 
+    public List<String> getAccounts() {
+        return accounts.values().stream()
+                .map(Account::toString)
+                .collect(Collectors.toList());
+    }
 }

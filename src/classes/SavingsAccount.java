@@ -33,7 +33,7 @@ public class SavingsAccount extends Account {
     @Override
     public String toString() {
         return "\n{" +
-                "type: SavingsAccount" +
+                "type=SavingsAccount" +
                 ", number=" + super.getNumber() +
                 ", balance=" + super.getBalance() +
                 ", client=" + super.getClient() +

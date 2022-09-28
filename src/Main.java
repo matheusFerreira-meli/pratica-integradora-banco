@@ -1,7 +1,5 @@
 import classes.Client;
 import data.AccountManager;
-import exceptions.InvalidNumberException;
-import exceptions.NotFoundException;
 import util.PrintPrinter;
 import util.PrintScreen;
 
@@ -12,13 +10,12 @@ public class Main {
         Client client3 = new Client(2, "2ddd34", "relll");
         AccountManager accountManager = new AccountManager();
 
-        accountManager.createCheckingAccount(client1);
-        accountManager.createCheckingAccount(client2);
-        accountManager.createCheckingAccount(client3);
+        accountManager.createCheckingAcc(client1);
+        accountManager.createSpecialAcc(client2);
+        accountManager.createSpecialAcc(client3);
 
         try {
-            accountManager.deposit(1, 500);
-            accountManager.deposit(2, 1000);
+            accountManager.withdraw(2, 500);
         } catch (Exception e) {
             System.out.println("Erro");
         }
@@ -26,6 +23,6 @@ public class Main {
 
         PrintScreen screen = new PrintScreen();
         PrintPrinter printer = new PrintPrinter();
-        screen.printOut(accountManager.getCheckingAccounts().toString());
+        screen.printOut(accountManager.getSpecialAccNegativeBalance().toString());
     }
 }

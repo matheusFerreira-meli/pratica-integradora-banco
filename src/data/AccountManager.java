@@ -6,7 +6,6 @@ import exceptions.InvalidNumberException;
 import exceptions.NotFoundException;
 import util.GenerateId;
 
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,19 +20,19 @@ public class AccountManager {
         this.generateId = GenerateId.getInstance();
     }
 
-    public void createCheckingAccount(Client client) {
+    public void createCheckingAcc(Client client) {
         int idAccount = generateId.getId();
         CheckingAccount account = new CheckingAccount(idAccount, client);
         accounts.put(idAccount, account);
     }
 
-    public void createSpecialAccount(Client client) {
+    public void createSpecialAcc(Client client) {
         int idAccount = generateId.getId();
         SpecialAccount account = new SpecialAccount(idAccount, client, 500);
         accounts.put(idAccount, account);
     }
 
-    public void createSavingsAccount(Client client) {
+    public void createSavingsAcc(Client client) {
         int idAccount = generateId.getId();
         SavingsAccount account = new SavingsAccount(idAccount, client);
         accounts.put(idAccount, account);
@@ -53,20 +52,20 @@ public class AccountManager {
         return account.deposit(value);
     }
 
-    public List<String> getAccounts() {
+    public List<String> getAcc() {
         return accounts.values().stream()
                 .map(Account::toString)
                 .collect(Collectors.toList());
     }
 
-    public String getAccount(int id) throws NotFoundException {
+    public String getAcc(int id) throws NotFoundException {
         Account account = accounts.get(id);
         if (account == null) throw new NotFoundException("Conta não encontrada");
 
         return account.toString();
     }
 
-    public void deleteAccount(int id) throws NotFoundException {
+    public void deleteAcc(int id) throws NotFoundException {
         Account account = accounts.get(id);
         if(account == null) throw new NotFoundException("Conta não encontrada");
 
@@ -74,10 +73,16 @@ public class AccountManager {
     }
 
 
-    public List<Account> getCheckingAccounts() {
+    public List<Account> getCheckingAcc() {
         return accounts.values().stream()
                 .filter(account -> account instanceof CheckingAccount)
                 .sorted((acc1, acc2) -> Double.compare(acc2.getBalance(), acc1.getBalance()))
+                .collect(Collectors.toList());
+    }
+
+    public List<Account> getSpecialAccNegativeBalance() {
+        return accounts.values().stream()
+                .filter(account -> account instanceof SpecialAccount && account.getBalance() < 0)
                 .collect(Collectors.toList());
     }
 }

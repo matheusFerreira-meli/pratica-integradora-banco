@@ -1,6 +1,8 @@
 package data;
 
 import classes.*;
+import exceptions.InsufficientFundsException;
+import exceptions.InvalidNumberException;
 import exceptions.NotFoundException;
 import util.GenerateId;
 
@@ -37,6 +39,20 @@ public class AccountManager {
         accounts.put(idAccount, account);
     }
 
+    public boolean withdraw(int idAccount, double value) throws NotFoundException, InvalidNumberException, InsufficientFundsException {
+        Account account = accounts.get(idAccount);
+        if(account == null) throw new NotFoundException("Conta não encontrada");
+
+        return account.toWithdraw(value);
+    }
+
+    public boolean deposit (int idAccount, double value) throws NotFoundException, InvalidNumberException {
+        Account account = accounts.get(idAccount);
+        if(account == null) throw new NotFoundException("Conta não encontrada");
+
+        return account.deposit(value);
+    }
+
     public List<String> getAccounts() {
         return accounts.values().stream()
                 .map(Account::toString)
@@ -57,10 +73,11 @@ public class AccountManager {
         accounts.remove(id);
     }
 
+
     public List<Account> getCheckingAccounts() {
         return accounts.values().stream()
                 .filter(account -> account instanceof CheckingAccount)
-                .sorted(Comparator.comparingDouble(Account::getBalance))
+                .sorted((acc1, acc2) -> Double.compare(acc2.getBalance(), acc1.getBalance()))
                 .collect(Collectors.toList());
     }
 }

@@ -1,9 +1,6 @@
 package data;
 
-import classes.Account;
-import classes.CheckingAccount;
-import classes.Client;
-import classes.SpecialAccount;
+import classes.*;
 import util.GenerateId;
 
 import java.util.HashMap;
@@ -27,6 +24,12 @@ public class AccountManager {
     public void createSpecialAccount(Client client) {
         int idAccount = generateId.getId();
         SpecialAccount account = new SpecialAccount(idAccount, client, 500);
+        accounts.put(idAccount, account);
+    }
+
+    public void createSavingsAccount(Client client) {
+        int idAccount = generateId.getId();
+        SavingsAccount account = new SavingsAccount(idAccount, client);
         accounts.put(idAccount, account);
     }
 

@@ -4,6 +4,7 @@ import classes.*;
 import exceptions.NotFoundException;
 import util.GenerateId;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -59,6 +60,7 @@ public class AccountManager {
     public List<Account> getCheckingAccounts() {
         return accounts.values().stream()
                 .filter(account -> account instanceof CheckingAccount)
+                .sorted(Comparator.comparingDouble(Account::getBalance))
                 .collect(Collectors.toList());
     }
 }

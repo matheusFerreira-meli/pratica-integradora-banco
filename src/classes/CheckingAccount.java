@@ -22,6 +22,11 @@ public class CheckingAccount extends Account {
 
     @Override
     public String toString() {
-        return "CheckingAccount: " + super.toString();
+        return "\n{" +
+                "type: CheckingAccount" +
+                ", number=" + super.getNumber() +
+                ", balance=" + super.getBalance() +
+                ", client=" + super.getClient() +
+                "}";
     }
 }

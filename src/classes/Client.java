@@ -15,7 +15,7 @@ public class Client {
     @Override
     public String toString() {
         return "{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", cpf='" + cpf + '\'' +
                 ", name='" + name + '\'' +
                 '}';

@@ -21,6 +21,10 @@ public abstract class Account {
         return number;
     }
 
+    public Client getClient() {
+        return client;
+    }
+
     public boolean toWithdraw(double value) throws InvalidNumberException, InsufficientFundsException {
         if(isInvalidNumber(value)) throw new InvalidNumberException("Valor de saque inválido");
 

@@ -1,5 +1,7 @@
 import classes.Client;
 import data.AccountManager;
+import util.PrintPrinter;
+import util.PrintScreen;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,6 +12,9 @@ public class Main {
         accountManager.createCheckingAccount(client1);
         accountManager.createSavingsAccount(client2);
 
-        System.out.println(accountManager.getAccounts());
+        PrintScreen screen = new PrintScreen();
+        PrintPrinter printer = new PrintPrinter();
+        screen.printOut(accountManager.getAccounts().toString());
+        printer.printOut(accountManager.getAccounts().toString());
     }
 }

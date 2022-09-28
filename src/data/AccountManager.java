@@ -1,6 +1,7 @@
 package data;
 
 import classes.*;
+import exceptions.NotFoundException;
 import util.GenerateId;
 
 import java.util.HashMap;
@@ -39,5 +40,19 @@ public class AccountManager {
         return accounts.values().stream()
                 .map(Account::toString)
                 .collect(Collectors.toList());
+    }
+
+    public String getAccount(int id) throws NotFoundException {
+        Account account = accounts.get(id);
+        if (account == null) throw new NotFoundException("Conta não encontrada");
+
+        return account.toString();
+    }
+
+    public void deleteAccount(int id) throws NotFoundException {
+        Account account = accounts.get(id);
+        if(account == null) throw new NotFoundException("Conta não encontrada");
+
+        accounts.remove(id);
     }
 }

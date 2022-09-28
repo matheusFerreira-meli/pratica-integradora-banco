@@ -29,4 +29,10 @@ public class SpecialAccount extends Account {
     boolean insufficientBalance(double value) {
         return getBalance() + limit < value;
     }
+
+    @Override
+    public String toString() {
+        return "SpecialAccount: {" +
+                "limit=" + limit + super.toString();
+    }
 }

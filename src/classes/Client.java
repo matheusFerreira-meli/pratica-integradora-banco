@@ -4,8 +4,7 @@ import util.GenerateId;
 
 public class Client {
     private final int id;
-    private final String cpf;
-    private final String name;
+    private final String cpf, name;
 
     public Client(String cpf, String name) {
         this.cpf = cpf;

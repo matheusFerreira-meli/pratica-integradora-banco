@@ -1,5 +1,6 @@
 package util;
 
+// Singleton
 public class GenerateId {
     private int id;
     private final static GenerateId instance = new GenerateId();
